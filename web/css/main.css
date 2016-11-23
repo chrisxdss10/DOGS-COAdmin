@@ -2,5 +2,10 @@
     background: rgba(135,211,124,0.7);
 }
 
+.error{
+    color: red; 
+    visibility: hidden;
+}
+
 
 

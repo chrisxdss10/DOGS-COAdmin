@@ -27,7 +27,18 @@
         <nav class="navbar navbar-default nav-app">
             <div class="container">
                 <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                        <span class="icon-bar app-icon"></span>
+                        <span class="icon-bar app-icon"></span>
+                        <span class="icon-bar app-icon"></span>
+                    </button>
                     <a class="navbar-brand" style="color:black;"> <span class="icon-paw"></span>Administrador</a>
+                </div>
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <li><a href="salir.jsp" style="color:black; font-size: 16px;"><span class="glyphicon glyphicon-off"></span>&nbsp;Salir</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -43,7 +54,7 @@
           
             
             <div class="tab-content">
-                <div class="tab-pane active" id="agregar">
+                <div class="tab-pane fade in active" id="agregar">
                     <h3>Registrar Centro</h3>
                     <form action="menuAdmin.jsp" class="form-horizontal" method="post">
                       <div class="form-group">
@@ -78,8 +89,8 @@
                         </div>
                       </div>
                         
-                      <div id="con" class="form-group error"> 
-                            <p>Las contraseñas no coinciden</p>
+                      <div id="con" class="form-group"> 
+                          <label id="texto" style="color: red; visibility: hidden;">Las contraseñas no coinciden</label>
                       </div>
                         
                       <div class="form-group">
@@ -141,18 +152,87 @@
                         <br>
                         <div class="col-xs-offset-5 col-lg-offset-5">
                             <input type='submit' name='RegistroC' id='RegistroC' class='btn btn-lg' value='Registrar' onClick='return validar(contrax, conf);'>
+                            <br><br><br><br>
                         </div>
                     </form>
                 </div>
                 
+                <div class="tab-pane fade" id="eliminar">
+                    <h3>Eliminar información del Centro</h3>
+                    <form action="buscar.jsp" class="form-horizontal" method="post">
+                        <div class="form-group">
+                          <br> 
+                            <label for="Centro" class="col-xs-12 col-sm-12 col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 control-label"> Nombre Centro</label>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                          <input type="text" class="form-control" name="nomCentro" id="nomCentro" placeholder="Centro">
+                          <br>
+                          <input type='submit' name='BuscarC' id='BuscarC' class='btn' value='Buscar'>
+                          <input type='submit' name='BorrarC' id='BorrarC' class='btn' value='Borrar'>
+                        </div> 
+                        </div>
+    
+                    </form>
+                    <br>
+                     <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>                                  
+                                </tr>
+                                <tr>
+                                    <th>Nombre</th>
+                                </tr>
+                                <tr>
+                                    <th>Teléfono</th>
+                                </tr>
+                                <tr>
+                                    <th>Correo</th>
+                                </tr>
+                                <tr>
+                                    <th>Dirección</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="tab-pane fade" id="consultar">
+                    <h3>Consulta general</h3>
+                    <form action="consultar.jsp" class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <br>  
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <input type='submit' name='ConsultarC' id='ConsultarC' class='btn' value='Consultar'>
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                    <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Correo</th>
+                                <th>Dirección</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    </div>
+                </div>
+                
 
-                <div class="tab-pane" id="eliminar">
-                    <h1>JEJEJEJEJE</h1>  
-                </div>
-                <div class="tab-pane" id="consultar">
-                    
-                </div>
+               
             </div>
+            
         </div>
+        
+        
+        
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+        
     </body>
 </html>
