@@ -39,7 +39,7 @@
             <form name="form" action="admin.jsp" method="post">
                 <div c id="cuadro">
                     <label >Clave de Acceso:</label>
-                    <input type="password" placeholder="Clave de Acceso" class="form-control" autocomplete="off" name="clave" id="clave">
+                    <input type="password" placeholder="Clave de Acceso" class="form-control" autocomplete="off" name="clave1" id="clave">
                     <label id="texto" style="color: red; visibility: hidden;">Clave Incorrecta</label>
                 </div>
                 <input type="submit" class="btn" value="Ingresar" id="mybtn" name="mybtn">
@@ -48,24 +48,44 @@
         
         <%
             if (request.getParameter("mybtn") != null ){
-            String clav;
-            clav = request.getParameter("clave");
-            
-            BD.cAdmin ad= new BD.cAdmin(clav);
+                String conE;
+                ResultSet r1=null;
 
-                 if(ad.getOpc()==1){
-                    
-                    out.println("<meta http-equiv='refresh' content='.0000001;URL=http://localhost:8080/Dogs/menuAdmin.jsp'/>");
-                 }
-                 else
-                 {
-                     out.println("<script> document.getElementById('cuadro').className = 'form-group has-error';</script>");
-                     out.println("<script> document.getElementById('texto').style.visibility='visible';</script>");
-                     out.println("<script> document.getElementById('clave').value='"+ad.getMiMensaje()+"';</script>");
-                     
-                 }
+                try {
+                    BD.Conexion con= new BD.Conexion();
+                    con.conectar();
+                    r1=con.consulta("call CrearClaveAdmin();");
+                }
+                catch (SQLException error){
+                    out.print(error.toString());
+                }
+
+                try{
+                   conE = request.getParameter("clave1");
+
                    
+                   
+                   if (r1.next()){
+                       String con = r1.getString("miClave");
+                       if(con.equals(conE)){
+                            HttpSession sesion = request.getSession();
+                            sesion.setAttribute("Admin", "Administrador"); 
+                            out.println("<meta http-equiv='refresh' content='.0000001;URL=http://localhost:8080/Dogs/menuAdmin.jsp'/>");
+                       }
+                       else {
+                            out.println("<script> document.getElementById('cuadro').className = 'form-group has-error';</script>");
+                            out.println("<script> document.getElementById('texto').style.visibility='visible';</script>");
+                       }
+                   }
+                   
+                }
+                catch(SQLException error){
+                    out.print(error.toString());
+                }
+                
             }
+                          
+         
                  
             
         %>

@@ -1,4 +1,6 @@
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -56,7 +58,7 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="agregar">
                     <h3>Registrar Centro</h3>
-                    <form action="menuAdmin.jsp" class="form-horizontal" method="post">
+                    <form action="RegistrarC.jsp" class="form-horizontal" method="post">
                       <div class="form-group">
                           <h4 class="text-center">Datos generales</h4><br> 
                             <label for="NombreC" class="col-xs-12 col-sm-12 col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 control-label"> Nombre Centro</label>
@@ -159,15 +161,15 @@
                 
                 <div class="tab-pane fade" id="eliminar">
                     <h3>Eliminar información del Centro</h3>
-                    <form action="buscar.jsp" class="form-horizontal" method="post">
+                    <form action="menuAdmin.jsp" class="form-horizontal" method="post">
                         <div class="form-group">
                           <br> 
                             <label for="Centro" class="col-xs-12 col-sm-12 col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 control-label"> Nombre Centro</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                           <input type="text" class="form-control" name="nomCentro" id="nomCentro" placeholder="Centro">
                           <br>
-                          <input type='submit' name='BuscarC' id='BuscarC' class='btn' value='Buscar'>
-                          <input type='submit' name='BorrarC' id='BorrarC' class='btn' value='Borrar'>
+                          <input type='submit' name='buttonp' id='BuscarC' class='btn' value='Buscar'>
+                          <input type='submit' name='buttonp' id='BorrarC' class='btn' value='Borrar'>
                         </div> 
                         </div>
     
@@ -198,11 +200,11 @@
                 
                 <div class="tab-pane fade" id="consultar">
                     <h3>Consulta general</h3>
-                    <form action="consultar.jsp" class="form-horizontal" method="post">
+                    <form action="menuAdmin.jsp" class="form-horizontal" method="post">
                         <div class="form-group">
                             <br>  
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <input type='submit' name='ConsultarC' id='ConsultarC' class='btn' value='Consultar'>
+                                <input type='submit' name='buttonp' id='ConsultarC' class='btn' value='Consultar'>
                             </div>
                         </div>
                     </form>
@@ -227,6 +229,30 @@
             </div>
             
         </div>
+        <%
+            
+            
+            HttpSession sesion = request.getSession();
+            if(sesion.getAttribute("Admin") == null){
+              String e="¿No eres administrador?";
+              response.sendRedirect("upsyAd.html?e="+e+"");
+            }
+            /*
+            try{
+                BD.Conexion con= new BD.Conexion();
+                con.conectar();
+                ResultSet r1= con.consulta("");
+            }
+            catch(SQLException error){
+                out.print(error.toString());
+            }
+            String pulsado=request.getParameter("buttonp");
+            
+            if(pulsado.equals(""))
+            {
+                
+            }*/
+        %>
         
         
         
