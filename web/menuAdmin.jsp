@@ -1,4 +1,6 @@
 
+<%@page import="BD.Centro"%>
+<%@page import="java.util.LinkedList"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.SQLException"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,7 +19,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/miestilo.css">
         <link rel="stylesheet" href="css/icomoon.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
@@ -28,7 +30,7 @@
         
         <nav class="navbar navbar-default nav-app">
             <div class="container">
-                <div class="navbar-header">
+                <div class="navbar-header  micolor">
                     <button class="navbar-toggle" data-toggle="collapse" data-target="#menu">
                         <span class="icon-bar app-icon"></span>
                         <span class="icon-bar app-icon"></span>
@@ -63,31 +65,31 @@
                           <h4 class="text-center">Datos generales</h4><br> 
                             <label for="NombreC" class="col-xs-12 col-sm-12 col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 control-label"> Nombre Centro</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                          <input type="text" class="form-control" name="nomC" id="nomC" placeholder="Centro">
+                            <input type="text" class="form-control" name="nomC" id="nomC" placeholder="Centro" autocomplete="off" minlength='1' maxlength='30'title='Utilice menos de 30 caracteres' required>
                         </div>
                             <label for="TelefonoC" class="col-xs-12 col-sm-12 col-md-1 col-lg-1 control-label">Teléfono</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <input type="text" class="form-control" name="tel" id="tel" placeholder="Teléfono">
+                            <input type="text" class="form-control" name="tel" id="tel" placeholder="Teléfono" autocomplete="off" minlength='1' maxlength='20'title='Utilice menos de 20 caracteres' required>
                         </div>
                       </div>
                       <div class="form-group">
                             <label for="Correo" class="col-xs-12 col-sm-12 col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 control-label">Correo</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <input type="text" class="form-control" name="correo" id="correo" placeholder="Correo">
+                            <input type="text" class="form-control" name="correo" id="correo" placeholder="Correo" autocomplete="off" minlength='1' maxlength='30'title='Utilice menos de 30 caracteres' required>
                         </div>
                             <label for="usuario" class="col-xs-12 col-sm-12 col-md-1 col-lg-1 control-label">Usuario</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Usuario">
+                            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Usuario" autocomplete="off" minlength='1' maxlength='30'title='Utilice menos de 30 caracteres' required>
                         </div>
                       </div>
                       <div class="form-group">
                             <label for="Contraseña" class="col-xs-12 col-sm-12 col-md-2 col-lg-2 control-label">Contraseña</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <input type="text" class="form-control" name="contrax" id="contrax" placeholder="Contraseña">
+                            <input type="text" class="form-control" name="contrax" id="contrax" placeholder="Contraseña" autocomplete="off" minlength='1' maxlength='30'title='Utilice menos de 30 caracteres' required>
                         </div>
                             <label for="Repetir" class="col-xs-12 col-sm-12 col-md-1 col-lg-1 control-label">Confirmar</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <input type="text" class="form-control" name="conf" id="conf" placeholder="Confirmar Contraseña">
+                            <input type="text" class="form-control" name="conf" id="conf" placeholder="Confirmar Contraseña" autocomplete="off">
                         </div>
                       </div>
                         
@@ -99,33 +101,33 @@
                           <h4 class="text-center">Dirección</h4> <br>
                           <label for="calle" class="col-xs-12 col-sm-12 col-md-2 col-lg-2 control-label">Calle</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <input type="text" class="form-control" name="calle" id="calle" placeholder="Calle">
+                            <input type="text" class="form-control" name="calle" id="calle" placeholder="Calle" autocomplete="off" minlength='1' maxlength='30'title='Utilice menos de 30 caracteres' required >
                         </div>
                             <label for="Numint" class="col-xs-12 col-sm-12 col-md-1 col-lg-1 control-label">Número Interior</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <input type="text" class="form-control" name="numint" id="conf" placeholder="Num. Int.">
+                            <input type="text" class="form-control" name="numint" id="conf" placeholder="Num. Int." autocomplete="off" minlength='1' maxlength='4'title='Utilice menos de 4 caracteres' required>
                         </div>
                       </div>
                         
                       <div class="form-group">
                           <label for="Numext" class="col-xs-12 col-sm-12 col-md-2 col-lg-2 control-label">Número Exterior</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <input type="text" class="form-control" name="numext" id="numext" placeholder="Núm. Ext.">
+                            <input type="text" class="form-control" name="numext" id="numext" placeholder="Núm. Ext." autocomplete="off" minlength='1' maxlength='4'title='Utilice menos de 4 caracteres' required>
                         </div>
                             <label for="cp" class="col-xs-12 col-sm-12 col-md-1 col-lg-1 control-label">Código Postal</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <input type="text" class="form-control" name="cp" id="cp" placeholder="C.P.">
+                            <input type="text" class="form-control" name="cp" id="cp" placeholder="C.P." autocomplete="off" minlength='1' maxlength='5'title='Utilice menos de 5 caracteres' required>
                         </div>
                       </div>
                         
                       <div class="form-group">
                           <label for="colonia" class="col-xs-12 col-sm-12 col-md-2 col-lg-2 control-label">Colonia</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <input type="text" class="form-control" name="colonia" id="colonia" placeholder="Colonia">
+                            <input type="text" class="form-control" name="colonia" id="colonia" placeholder="Colonia" autocomplete="off" minlength='1' maxlength='30'title='Utilice menos de 30 caracteres' required>
                         </div>
                             <label for="delegacion" class="col-xs-12 col-sm-12 col-md-1 col-lg-1 control-label">Delegación</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <input type="text" class="form-control" name="delegacion" id="delegacion" placeholder="Delegación">
+                            <input type="text" class="form-control" name="delegacion" id="delegacion" placeholder="Delegación" autocomplete="off" minlength='1' maxlength='30'title='Utilice menos de 30 caracteres' required>
                         </div>
                             
                       </div>
@@ -133,7 +135,7 @@
                       <div class="form-group">
                           <label for="estado" class="col-xs-12 col-sm-12 col-md-2 col-lg-2 control-label">Estado</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <input type="text" class="form-control" name="estado" id="estado" placeholder="Estado">
+                            <input type="text" class="form-control" name="estado" id="estado" placeholder="Estado" autocomplete="off" minlength='1' maxlength='30'title='Utilice menos de 30 caracteres' required>
                         </div>    
                       </div>
                         <br>
@@ -161,52 +163,25 @@
                 
                 <div class="tab-pane fade" id="eliminar">
                     <h3>Eliminar información del Centro</h3>
-                    <form action="menuAdmin.jsp" class="form-horizontal" method="post">
+                    <form action="eliminarAd.jsp" class="form-horizontal" method="post">
                         <div class="form-group">
                           <br> 
                             <label for="Centro" class="col-xs-12 col-sm-12 col-md-1 col-md-offset-1 col-lg-1 col-lg-offset-1 control-label"> Nombre Centro</label>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                          <input type="text" class="form-control" name="nomCentro" id="nomCentro" placeholder="Centro">
+                            <input type="text" class="form-control" name="nomCentro" id="nomCentro" placeholder="Centro" autocomplete="off">
                           <br>
-                          <input type='submit' name='buttonp' id='BuscarC' class='btn' value='Buscar'>
-                          <input type='submit' name='buttonp' id='BorrarC' class='btn' value='Borrar'>
+                              <input type='submit' name='BorrarC' id='BorrarC' class='btn' value='Borrar'>                          
                         </div> 
                         </div>
     
                     </form>
                     <br>
-                     <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>#</th>                                  
-                                </tr>
-                                <tr>
-                                    <th>Nombre</th>
-                                </tr>
-                                <tr>
-                                    <th>Teléfono</th>
-                                </tr>
-                                <tr>
-                                    <th>Correo</th>
-                                </tr>
-                                <tr>
-                                    <th>Dirección</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
                 </div>
                 
                 <div class="tab-pane fade" id="consultar">
                     <h3>Consulta general</h3>
                     <form action="menuAdmin.jsp" class="form-horizontal" method="post">
-                        <div class="form-group">
-                            <br>  
-                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                <input type='submit' name='buttonp' id='ConsultarC' class='btn' value='Consultar'>
-                            </div>
-                        </div>
+                        
                     </form>
                     <br>
                     <div class="table-responsive">
@@ -220,6 +195,21 @@
                                 <th>Dirección</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <%
+                                LinkedList<Centro> lista = BD.ConsultaCentro.getCentros();
+                                for (int i=0;i<lista.size();i++)
+                                {
+                                    out.println("<tr>");
+                                        out.println("<td>"+(i+1)+"</td>");
+                                        out.println("<td>"+lista.get(i).getNombre()+"</td>");
+                                        out.println("<td>"+lista.get(i).getTelefono()+"</td>");
+                                        out.println("<td>"+lista.get(i).getCorreo()+"</td>");
+                                        out.println("<td>"+lista.get(i).getDireccion()+"</td>");
+                                    out.println("</tr>");
+                                }
+                            %>
+                        </tbody>
                     </table>
                     </div>
                 </div>
@@ -237,21 +227,7 @@
               String e="¿No eres administrador?";
               response.sendRedirect("upsyAd.html?e="+e+"");
             }
-            /*
-            try{
-                BD.Conexion con= new BD.Conexion();
-                con.conectar();
-                ResultSet r1= con.consulta("");
-            }
-            catch(SQLException error){
-                out.print(error.toString());
-            }
-            String pulsado=request.getParameter("buttonp");
-            
-            if(pulsado.equals(""))
-            {
-                
-            }*/
+           
         %>
         
         

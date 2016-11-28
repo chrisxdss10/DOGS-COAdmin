@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/miestilo.css">
         <link rel="stylesheet" href="css/icomoon.css">
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
         
@@ -28,7 +28,7 @@
         <nav class="navbar navbar-default nav-app">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" style="color:black;"> <span class="icon-paw"></span>Administrador</a>
+                    <a class="navbar-brand micolor" style="color:black;"> <span class="icon-paw"></span>Administrador</a>
                 </div>
             </div>
         </nav>
@@ -70,6 +70,7 @@
                        if(con.equals(conE)){
                             HttpSession sesion = request.getSession();
                             sesion.setAttribute("Admin", "Administrador"); 
+                            sesion.setMaxInactiveInterval(300);
                             out.println("<meta http-equiv='refresh' content='.0000001;URL=http://localhost:8080/Dogs/menuAdmin.jsp'/>");
                        }
                        else {

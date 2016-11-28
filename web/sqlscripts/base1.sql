@@ -1,4 +1,5 @@
 drop database if exists doggos;
+
 create database doggos;
 use doggos;
 
@@ -48,11 +49,12 @@ drop table if exists Centro;
 create table Centro(IdCentro int(2) primary key not null,
 NombreCentro varchar(30) not null,
 Usuario varchar(30) not null,
-Contraseña varchar(30) not null,
+Contrasenia varchar(30) not null,
 Descripcion blob not null,
 Telefono varchar(20) not null,
 Correo varchar(30) not null,
-IdDireccion int(2) not null,
+IdDireccion int(2),
+Foto blob,
 foreign key(IdDireccion) references DireccionCentro (IdDireccion));
 
 drop table if exists Perro;
@@ -85,4 +87,8 @@ foreign key(IdPerro) references Perro (IdPerro)
 drop table if exists Administrador;
 create table Administrador(IdAdministrador int(1) primary key not null,
 Tipo varchar(20),
-Clave varchar(32));
+Clave blob);
+
+
+
+

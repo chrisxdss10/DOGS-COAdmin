@@ -1,0 +1,26 @@
+@font-face {
+font-family:HelloAnnie;
+src: url(fuentes/HelloAnnie.ttf);
+}
+
+@font-face {
+font-family:HirukoBlackAlternate;
+src: url(fuentes/HirukoBlackAlternate.ttf);
+}
+
+.nav-app{
+    background: rgba(211, 84, 0, 1);
+}
+
+.error{
+    color: red; 
+    visibility: hidden;
+}
+
+body{
+    font-family: HelloAnnie;
+}
+
+.micolor{
+    font-family: HirukoBlackAlternate;
+}
